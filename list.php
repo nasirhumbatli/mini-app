@@ -33,7 +33,7 @@ require_auth();
     </div>
 
     <div class="card p-3 shadow-sm">
-        <table id="tbl" class="table table-striped w-100">
+        <table id="datatable" class="table table-striped w-100">
             <thead>
             <tr>
                 <th>ID</th>
@@ -46,6 +46,7 @@ require_auth();
         </table>
     </div>
 </div>
+<script src="assets/js/ss-datatable.js"></script>
 </body>
 </html>
 

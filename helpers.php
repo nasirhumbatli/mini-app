@@ -12,3 +12,8 @@ function csrf_verify(string $token): bool
 {
     return hash_equals($_SESSION['csrf_token'] ?? '', $token);
 }
+
+function protect_xss(?string $string): string
+{
+    return htmlspecialchars($string, ENT_QUOTES);
+}

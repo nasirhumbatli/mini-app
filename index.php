@@ -1,5 +1,7 @@
 <?php
 declare(strict_types=1);
+
+require_once "helpers.php";
 ?>
 <!doctype html>
 <html lang="en">
@@ -23,6 +25,7 @@ declare(strict_types=1);
                 </div>
             </div>
             <form id="registrationForm" class="col-6 m-auto" method="POST">
+                <input type="hidden" name="csrf_token" value="<?= protect_xss(csrf_token()) ?>">
                 <div class="form-group">
                     <label for="fullName" class="fw-bold">Full name</label>
                     <input type="text" class="form-control" id="fullName" name="full_name" required>

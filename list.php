@@ -26,7 +26,7 @@ require_auth();
             <button id="btnXlsx" class="btn btn-outline-success btn-sm">Export XLSX</button>
             <button id="btnPdf" class="btn btn-outline-danger  btn-sm">Export PDF</button>
             <form action="logout.php" class="col-6 m-auto" method="POST">
-                <input type="hidden" name="csrf_token" value="<?= htmlspecialchars(csrf_token(), ENT_QUOTES) ?>">
+                <input type="hidden" name="csrf_token" value="<?= protect_xss(csrf_token()) ?>">
                 <button type="submit" class="btn btn-dark">Çıxış</button>
             </form>
         </div>

@@ -18,10 +18,10 @@ function protect_xss(?string $string): string
     return htmlspecialchars($string, ENT_QUOTES);
 }
 
-function json_success(string $message): void
+function json_success(string $message, array $data = []): void
 {
     header('Content-Type: application/json');
-    echo json_encode(['status' => 'success', 'message' => $message], JSON_UNESCAPED_UNICODE);
+    echo json_encode(['status' => 'success', 'message' => $message, 'data' => $data], JSON_UNESCAPED_UNICODE);
     exit;
 }
 
@@ -46,4 +46,22 @@ function validate_registration_form(array $data): array
     if ($company !== '' && mb_strlen($company) > 120) $errors['company'] = 'Company maksimum 120 simvoldan ibarət ola bilər.';
 
     return [$fullName, $email, $company, $errors];
+}
+
+function validate_login_form(array $data): array
+{
+    $email = trim($data['email'] ?? '');
+    $password = trim($data['password'] ?? '');
+
+    $errors = [];
+
+    if ($email === '' || $password === '') {
+        $errors['email'] = 'Email tələb olunur';
+        $errors['password'] = 'Şifrə tələb olunur';
+    }
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL) || mb_strlen($email) > 120) $errors['email'] = 'Düzgün email tələb olunur (max 120).';
+    if (mb_strlen($password) > 18) $errors['password'] = 'Şifrə maksimum 18 simvoldan ibarət olmalıdır. (max 18).';
+
+    return [$email, $password, $errors];
 }

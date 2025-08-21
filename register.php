@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/database.php';
 require_once __DIR__ . '/helpers.php';
+require_once __DIR__ . '/mail.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     json_error('Ancaq Post sorğularına icazə verilir', [], 405);
@@ -30,8 +31,10 @@ try {
     $db->insert('INSERT INTO registrations (full_name,email,company) VALUES (:fullname,:email,:company)',
         [':fullname' => $fullName, ':email' => $email, ':company' => $company]);
 
+    Mailer::notifyAdmin($fullName, $email, $company);
+
     json_success('Qeydiyyat tamamlandı');
 
 } catch (Throwable $e) {
-    json_error('Database connection error', ['errors' => $e->getMessage()], 422);
+    json_error('Operation error.', ['errors' => $e->getMessage()], 422);
 }

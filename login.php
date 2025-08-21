@@ -28,7 +28,7 @@ require_once __DIR__ . '/helpers.php';
         </div>
 
         <div class="mb-3">
-            <label for="password" class="form-label">Şifrə</label>
+            <label for="password" class="form-label">Password</label>
             <input name="password" id="password" type="password" class="form-control" required placeholder="*******">
             <small id="passwordError" class="form-text text-danger"></small>
         </div>

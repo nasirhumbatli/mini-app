@@ -16,7 +16,9 @@ require_once __DIR__ . '/helpers.php';
 <div class="container py-5">
     <h1 class="mb-4">Admin Giriş</h1>
 
-    <div id="alert" class="alert d-none" role="alert"></div>
+    <div id="formAlert" class="d-none alert-danger" role="alert">
+        A simple success alert—check it out!
+    </div>
 
     <form id="loginForm" class="card p-4 shadow-sm" method="post">
         <input type="hidden" name="csrf_token" value="<?= protect_xss(csrf_token()) ?>">
@@ -36,5 +38,6 @@ require_once __DIR__ . '/helpers.php';
         <button id="btnLogin" class="btn btn-primary" type="submit">Daxil ol</button>
     </form>
 </div>
+<script src="assets/js/login.js"></script>
 </body>
 </html>

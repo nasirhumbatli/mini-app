@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-require_once "helpers.php";
+require_once __DIR__ . '/helpers.php';
 ?>
 <!doctype html>
 <html lang="en">
@@ -50,6 +50,6 @@ require_once "helpers.php";
         </div>
     </div>
 </div>
-<script src="assets/registration.js"></script>
+<script src="assets/js/registration.js"></script>
 </body>
 </html>

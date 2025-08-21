@@ -2,19 +2,19 @@ $('#registrationForm').on('submit', function (e) {
     e.preventDefault();
 
     $.ajax({
-        url: 'insert.php',
+        url: 'register.php',
         method: 'POST',
         data: $(this).serialize(),
         dataType: 'json'
     }).done(function (res) {
         $('#formAlert').removeClass('d-none alert-danger').addClass('alert alert-success').text(res.message);
         $('#registrationForm')[0].reset();
-    }).fail(function (xhr) {
+        $('#fullNameError').text('');
+        $('#emailError').text('');
+        $('#companyError').text('');
+    }).fail(function (responseJson) {
         let res = {};
-        try {
-            res = JSON.parse(xhr.responseText)
-        } catch {
-        }
+        res = JSON.parse(responseJson.responseText);
         $('#formAlert').removeClass('d-none alert-success').addClass('alert alert-danger').text(res.message);
 
         if (res.fields) {

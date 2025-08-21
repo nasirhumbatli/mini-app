@@ -4,7 +4,7 @@ declare(strict_types=1);
 class DB
 {
     private PDO $pdo;
-    private static DB $instance;
+    private static $instance;
 
     public function __construct()
     {
@@ -26,6 +26,7 @@ class DB
             $this->pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
             $this->pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
         } catch (PDOException $e) {
+            json_error('Database connection error', ['errors' => $e->getMessage()], 422);
             die("PDO Error: " . $e->getMessage());
         }
     }

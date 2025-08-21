@@ -50,5 +50,6 @@ require_once "helpers.php";
         </div>
     </div>
 </div>
+<script src="assets/registration.js"></script>
 </body>
 </html>

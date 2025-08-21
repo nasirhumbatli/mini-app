@@ -18,20 +18,18 @@ require_once __DIR__ . '/helpers.php';
 
     <div id="alert" class="alert d-none" role="alert"></div>
 
-    <form id="loginForm" class="card p-4 shadow-sm" method="post" novalidate>
+    <form id="loginForm" class="card p-4 shadow-sm" method="post">
         <input type="hidden" name="csrf_token" value="<?= protect_xss(csrf_token()) ?>">
 
         <div class="mb-3">
-            <label class="form-label">Email</label>
-            <input name="email" type="email" class="form-control" required>
-            <div class="invalid-feedback" data-field="email"></div>
+            <label for="email" class="form-label">Email</label>
+            <input name="email" id="email" type="email" class="form-control" required>
             <small id="emailError" class="form-text text-danger"></small>
         </div>
 
         <div class="mb-3">
-            <label class="form-label">Şifrə</label>
-            <input name="password" type="password" class="form-control" required placeholder="*******">
-            <div class="invalid-feedback" data-field="password"></div>
+            <label for="password" class="form-label">Şifrə</label>
+            <input name="password" id="password" type="password" class="form-control" required placeholder="*******">
             <small id="passwordError" class="form-text text-danger"></small>
         </div>
 
